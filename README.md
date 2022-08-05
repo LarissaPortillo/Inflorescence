@@ -7,10 +7,11 @@ For the Per Scholas Module 2 Project, we are tasked with creating an app that em
 ### flowers
    VERB 		 | 		  PATH 		 |  	 DESCRIPTION
 ------------ | ------------- | -------------------
-GET | /api/v1/photos/ | index of flowers |
-GET | /api/v1/photos/:id | show page for selected flower |
-GET | /api/v1/photos/new | page to add flower |
-POST | /api/v1/photos/ | add a flower |
-GET | /api/v1/photos/:id/edit | page to edit a flowe |
-PUT | /api/v1/photos/:id | edit/update a flower |
-DELETE | /api/v1/photos/:id | delete a flower |
+GET | /api/v1/ | home page  |
+GET | /api/v1/flor/ | index showing all flower arrangements |
+GET | /api/v1/flor/:id | show page for selected flower arrangement |
+GET | /api/v1/flor/new | page to add flower product |
+POST | /api/v1/flor/ | add a flower product |
+GET | /api/v1/flor/:id/edit | page to edit a flower product |
+PUT | /api/v1/flor/:id | edit/update a flower product |
+DELETE | /api/v1/flor/:id | delete a flower product|
