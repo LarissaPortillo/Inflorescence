@@ -35,6 +35,24 @@ app.get('/',(req,res)=>{
     res.render('Home');
 })
 
+//index
+app.get('/flor',(req,res)=>{
+    Flower.find({},(err,allFlowers)=>{
+        res.render('Index', {flower:allFlowers});
+    });
+});
+
+//new
+app.get('/flor/new',(req,res)=>{
+    res.render('New');
+});
+
+//post
+app.post('/flor',(req,res)=>{
+    Flower.create(req.body,(err,createdFlower)=>{
+        res.redirect('/flor');
+    });
+});
 
 app.listen(port,()=>{
     console.log('Listen to port ',port);
