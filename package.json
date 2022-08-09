@@ -1,0 +1,33 @@
+{
+  "name": "inflorescence",
+  "version": "1.0.0",
+  "description": "For the Per Scholas Module 2 Project, we are tasked with creating an app that emulates a store of our creation. I decided to build a website that sells arrangement of flowers for different occassions.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "16.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LarissaPortillo/Inflorescence.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LarissaPortillo/Inflorescence/issues"
+  },
+  "homepage": "https://github.com/LarissaPortillo/Inflorescence#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-react-views": "^0.11.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.5.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  }
+}
