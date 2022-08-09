@@ -30,7 +30,10 @@ app.engine('jsx',require('express-react-views').createEngine());
 const Flower = require('./models/Flower')
 
 //routes
-
+//home page
+app.get('/',(req,res)=>{
+    res.render('Home');
+})
 
 
 app.listen(port,()=>{
