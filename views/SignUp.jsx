@@ -1,6 +1,6 @@
 const React = require("react");
 
-class CreateLogin extends React.Component{
+class SignUp extends React.Component{
     render(){
         return(
             <html lang="en">
@@ -8,6 +8,7 @@ class CreateLogin extends React.Component{
                 <meta charSet="UTF-8" />
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link href="http://fonts.cdnfonts.com/css/drugs" rel="stylesheet"></link>
                 <title>Create Login</title>
             </head>
             <body>
@@ -25,4 +26,4 @@ class CreateLogin extends React.Component{
 }
 
 
-module.exports = CreateLogin;
+module.exports = SignUp;

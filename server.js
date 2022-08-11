@@ -41,6 +41,33 @@ app.get('/login',(req,res)=>{
     res.render('Login');
 });
 
+//AUTH routes//
+//sign up page
+app.get('/signup',(req,res)=>{
+    res.render('SignUp')
+});
+
+
+//log in page
+app.get('/login',(req,res)=>{
+    res.render('Login');
+})
+
+//create a new user in db
+app.post('/signup',(req,res)=>{
+    res.send('new signup');
+})
+
+//authenticate a current user
+app.post('/login',(req,res)=>{
+    res.send('logged in')
+})
+
+//log a user out
+app.get('/logout')
+
+//----------//
+
 //index
 app.get('/flor',(req,res)=>{
     Flower.find({},(err,allFlowers)=>{
