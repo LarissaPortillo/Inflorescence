@@ -1,0 +1,102 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,900');
+@import url('http://fonts.cdnfonts.com/css/drugs');
+
+body{
+    background-color: black;
+    text-align: center;
+    color:black;
+    font-family: 'Drugs', sans-serif;  
+    margin: 0 auto;
+}
+  
+nav{
+    padding: 4px;
+    display:flex;
+    height:7vh;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid ;
+    border-bottom-color: orangered;
+}
+  
+.titleNav{
+    font-weight: 500;
+    text-decoration: none;
+    color:orangered;
+}
+
+.login{
+    text-decoration: none;
+    color:orangered;
+}
+  
+span{
+    transform: scaleX(-1);
+    display: inline-block;
+}
+
+.container{
+    display:flex;
+    flex-wrap: wrap;
+    padding:10px;
+}
+
+.left{
+    width:40vw;
+    height:60vh;
+}
+
+.right{
+    color:white;
+    width:40vw;
+    height: 60vh;
+}
+
+img{
+    height:90%;
+    width:auto;
+}
+
+
+#cartBtn{
+    width:15vw;
+    height:5vh;
+    background-color: transparent;
+    color:orangered;
+    border:1px solid orangered;
+    cursor:pointer; 
+    font-family: 'Montserrat', sans-serif;    
+}
+
+#cart {
+    width: 10px;
+    height: 10px;
+    position: relative;
+    transform: translateX(30px);
+    opacity: 0;
+    -webkit-transition: all .25s cubic-bezier(.14, .59, 1, 1.01);
+    transition: all .15s cubic-bezier(.14, .59, 1, 1.01);
+}
+  
+#cartBtn:hover i {
+    width: 15px;
+    opacity: 1;
+    transform: translateX(10px); 
+}
+
+.cBtn{
+    width:15vw;
+    height:5vh;
+    background-color: transparent;
+    border:1px solid orangered;
+    font-family: 'Montserrat', sans-serif;      
+}
+
+#nostock{
+    color:transparent;
+}
+  
+#nostock:hover{
+    color:orangered;
+}

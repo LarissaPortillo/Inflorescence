@@ -12,6 +12,10 @@ class Edit extends React.Component{
                 <title>Edit Product</title>
             </head>
             <body>
+                <nav>
+                    <a href='/' className="titleNav">I<span>N</span>FLORESCE<span>N</span>CE</a>
+                    <a href='/' className="login">LOGOUT</a>
+                </nav>
                 <form action={`/flor/${flower.id}/?_method=PUT`} method='POST'>
                         Default image link: <input type='text' name='defaultPic' value={flower.defaultPic}></input>
                         Name: <input type='text' name='name' value={flower.name}></input>
