@@ -1,0 +1,221 @@
+/* create new product button reference https://codepen.io/Saabbir/pen/LNzdGZ */
+/* cart button reference https://codepen.io/atloomer/pen/JEaRWX */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,900');
+
+body{
+    background-color: black;
+    text-align: center;
+    color:whitesmoke;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+   
+::-webkit-scrollbar-thumb {
+    background: orangered; 
+    border-radius: 3px;
+}
+
+.new{
+    height:15vh;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+
+a.btn {
+    margin-left: 10%;
+    text-decoration: none;
+    display: inline-block;
+}
+  
+.btn {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    position: relative;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    transition: all .3s ease-out;
+}
+  
+.text {
+    padding: 0 50px;
+    visibility: hidden;
+}
+  
+.flip-front, .flip-back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: flat;
+    transition: transform .3s ease-out;
+}
+  
+.flip-front {
+    color: orangered;
+    border: 2px solid ;
+    background-color: transparent;
+    transform: rotateX(0deg) translateZ(25px);
+}
+  
+.flip-back {
+    color: #fff;
+    background-color: orangered;
+    border: 2px solid orangered;
+    transform: rotateX(90deg) translateZ(25px);
+}
+  
+.btn:hover .flip-front {
+    transform: rotateX(-90deg) translateZ(25px);
+}
+  
+.btn:hover .flip-back {
+    transform: rotateX(0deg) translateZ(25px);
+}
+
+nav{
+    padding: 4px;
+    height:7vh;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid;
+    border-bottom-color: orangered;
+}
+
+.titleNav{
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none;
+    color:orangered;
+}
+
+.login{
+    text-decoration: none;
+    color:orangered;
+}
+
+span{
+    transform: scaleX(-1);
+    display: inline-block;
+}
+
+.container{
+    margin-left:10%;
+    display:flex;
+    flex-wrap: wrap;
+    width:80vw;
+}
+
+.card{
+    display: grid;
+    grid-template-rows: 2fr 1fr 2fr 4fr 3fr 2fr 2fr 2fr;
+    grid-template-columns: 1fr 1fr;
+    height:80vh;
+    width:25vw;
+    padding:5px;
+    padding-bottom: 20px;
+    padding-top:20px;
+    border-bottom:1px solid rgba(67, 66, 66, 0.808);
+}
+
+.name{
+    grid-area: 1/1/2/3;
+    position:relative;
+}
+.divider{
+    grid-area: 2/1/3/3 ;
+    margin-top: -4%;
+}
+
+.price{
+    grid-area: 3/1/4/3;
+}
+
+.default{
+    grid-area: 4/1/5/3;
+    
+}
+.default img{
+    height:30vh;
+    width:auto;
+    -webkit-box-reflect: below 0px linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.0), rgba(0,0,0,0),rgba(0,0,0,0.5));
+}
+
+
+.inventory{
+    grid-area: 6/1/7/3;
+}
+
+.cartBtn{
+    grid-area: 7/1/8/3;
+
+}
+
+.edit{
+    grid-area: 8/1/9/3;
+
+}
+
+.delete{
+    grid-area: 9/1/10/3;
+
+}
+
+i{
+    color:orangered;
+    cursor:pointer;
+}
+
+.del{
+    border:none;
+    background-color: transparent;
+}
+
+#cartBtn{
+    width:15vw;
+    height:5vh;
+    background-color: transparent;
+    color:orangered;
+    border:1px solid orangered;
+    cursor:pointer;  
+}
+
+#cart {
+    width: 10px;
+    height: 10px;
+    position: relative;
+    transform: translateX(30px);
+    opacity: 0;
+    -webkit-transition: all .25s cubic-bezier(.14, .59, 1, 1.01);
+    transition: all .15s cubic-bezier(.14, .59, 1, 1.01);
+}
+  
+#cartBtn:hover i {
+    width: 15px;
+    opacity: 1;
+    transform: translateX(10px); 
+}
+
+.cBtn{
+    width:15vw;
+    height:5vh;
+    background-color: transparent;
+    border:1px solid orangered;
+}
+
+#nostock{
+    color:transparent;
+}
+  
+#nostock:hover{
+    color:orangered;
+}
