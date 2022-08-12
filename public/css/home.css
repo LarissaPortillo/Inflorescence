@@ -1,7 +1,7 @@
 /* neon animation reference:https://codepen.io/TajShireen/pen/RvNdLB */
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,900');
-@import url('http://fonts.cdnfonts.com/css/drugs');
+@import url('https://fonts.cdnfonts.com/css/drugs');
 
 body{
   background-color: black;
@@ -9,12 +9,22 @@ body{
   color:black;
   font-family: 'Drugs', sans-serif;  
   margin: 0 auto;
+  padding-bottom:20px;
+}
+.greetingContain{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:orangered;
+  height:8vh;
+  width:auto;
+  font-size:20px;
 }
 
 nav{
 	padding: 4px;
   display:flex;
-  height:7vh;
+  height:6vh;
   justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid ;
@@ -41,11 +51,13 @@ nav{
 
 .landing{
   position:relative;
+  height:70%;
+  width:auto;
 }
 
 img{
   height:auto;
-  width:90vw;
+  width:75vw;
 }
 
 span{
@@ -54,12 +66,12 @@ span{
 }
 
 .container{
-  width: 80%;
+  width: 75%;
   padding:5rem;
   grid-gap: 0.2rem;
   color:wheat;
   position: absolute;
-  top:52%;
+  top:55%;
   left:50%;
   transform:translate(-50%, -50%);
 }
@@ -88,4 +100,12 @@ span{
     box-shadow: 0px 0px 10px 0px orangered, 0px 0px 30px 0px orangered,0px 0px 100px 0px orangered, inset 0px 0px 30px orangered;
   }
 }  
-    
+  
+.anchorBtn{
+  border: 1px solid orangered;
+  padding:6px;
+  cursor: pointer;
+  color: orangered;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+}

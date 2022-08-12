@@ -9,16 +9,20 @@ class SignUp extends React.Component{
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <link href="https://fonts.cdnfonts.com/css/drugs" rel="stylesheet"></link>
-                <title>Create Login</title>
+                <title>SignUp</title>
             </head>
             <body>
                 <div>
-                    <form action='/' method='POST'>
-                        Username: <input type='text' name='username'></input>
-                        Password: <input type='text' name='password'></input>
-                        <input type='submit' name='' value='Create Login'></input>
+                    <form>
+                        Name : <input type='text' name='name' required></input>
+                        Username: <input type='text' name='username' required></input>
+                        <div className='username error'></div>
+                        Password: <input type='password' name='password' required></input>
+                        <div className='password error'></div>
+                        <input type='submit' name='' value='Sign Up'></input>
                     </form>
                 </div>
+                <script src='/js/signup.js'></script>
             </body>
             </html>
         );

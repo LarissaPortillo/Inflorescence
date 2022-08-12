@@ -1,6 +1,7 @@
 const express = require('express');
-const mongoose=require('mongoose');
-
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser')
+const jwt = require('jsonwebtoken');
 const app = express();
 
 require('dotenv').config();
@@ -18,7 +19,11 @@ mongoose.connection.once('open',()=>{
 //middleware
 app.use(express.urlencoded({extended : true}));
 app.use(methodOverride('_method'));
-app.use(express.static('public'))
+app.use(express.static('public'));
+app.use(express.json());
+app.use(cookieParser());
+
+
 
 //set views
 app.set('view engine','jsx');
@@ -29,22 +34,102 @@ app.engine('jsx',require('express-react-views').createEngine());
 //schema
 const Flower = require('./models/Flower');
 const Cart = require('./models/Cart');
+const User = require('./models/User')
+
+
+const requireAuth = (req,res,next)=>{
+    const tkn = req.cookies.jwt;
+    
+    //check json web token exists and is verified
+    if(tkn){
+        jwt.verify(tkn, 'my little secret', (err, decodedToken)=>{
+            if(err){
+                console.log(err.message);
+                res.redirect('/login');
+            }
+            else{
+                console.log(decodedToken);
+                next();
+            }
+        });
+    }
+    else{
+        res.redirect('/login');
+    }
+}
+
+//check current user
+const checkUser = (req,res,next)=>{
+    const tkn = req.cookies.jwt;
+
+    if(tkn){
+        jwt.verify(tkn, 'my little secret', async (err, decodedToken)=>{
+            if(err){
+                console.log(err.message);
+                res.locals.user=null;
+                next();
+            }
+            else{
+                console.log(decodedToken);
+                let user = await User.findById(decodedToken.id);
+                res.locals.user = user;
+                next();
+            }
+        });
+    }
+    else{
+        res.locals.user = null;
+        next();
+    }
+}
+
+//handle errors
+const handleErrors = (err) =>{
+    console.log(err.message,err.code);
+    let errors = {name: '', username:'', password:''};
+    
+    //incorrect username
+    if(err.message === 'incorrect username'){
+        errors.username = 'That username is not registered';
+    }
+
+    //incorrect password
+    if(err.message === 'incorrect password'){
+        errors.username = 'That password is incorrect';
+    }
+
+    //duplicate error code
+    if(err.code===11000){
+        errors.username='That username is already in use.';
+        return errors;
+    }
+
+    //validation errors
+    if(err.message.includes('User validation failed')){
+       Object.values(err.errors).forEach(({properties})=>{
+        errors[properties.path]=properties.message;
+       })
+    }
+    return errors;
+}
+
+const maxAge = 3*24*60*60; //(3 days*24hrs*60minutes*60secs) max age is 3 days
+const createToken = (id) =>{
+    return jwt.sign({id},'my little secret',{
+        expiresIn: maxAge
+    });
+}
+
+
 
 //routes
-//home page
-app.get('/',(req,res)=>{
-    res.render('Home');
-});
-
-//login
-app.get('/login',(req,res)=>{
-    res.render('Login');
-});
+//'*' apply to all routes and get request
+app.get('*', checkUser);
 
 //AUTH routes//
 //sign up page
 app.get('/signup',(req,res)=>{
-    res.render('SignUp')
+    res.render('SignUp');
 });
 
 
@@ -54,22 +139,54 @@ app.get('/login',(req,res)=>{
 })
 
 //create a new user in db
-app.post('/signup',(req,res)=>{
-    res.send('new signup');
+app.post('/signup', async(req,res)=>{
+    const{name,username,password,admin} = req.body;
+    try{
+        const user = await User.create({name,username,password,admin:false});
+        const token = createToken(user.id);
+        res.cookie('jwt',token,{httpOnly: true, maxAge: maxAge*1000});
+        res.status(201).json({user:user.id});
+    }
+    catch(err){
+        const errors = handleErrors(err); 
+        // handleErrors(err);
+        res.status(400).json({errors});
+    }
 })
 
 //authenticate a current user
-app.post('/login',(req,res)=>{
-    res.send('logged in')
-})
+app.post('/login', async(req,res)=>{
+    const{username,password} = req.body;
+  
+    try{
+        const user = await User.login(username,password);
+        const token = createToken(user._id);
+        res.cookie('jwt',token,{httpOnly: true, maxAge: maxAge*1000});
+        res.status(200).json({user:user._id});
+    }
+    catch(err){
+        const errors = handleErrors(err);
+        // handleErrors(err);
+        res.status(400).json({errors});
+    }
+});
 
 //log a user out
-app.get('/logout')
+app.get('/logout',(req,res)=>{
+    //delete jwt cookie, we can't delete but we can replace it with a blank cookie
+    res.cookie('jwt','', {maxAge:1});
+    res.redirect('/');
+});
 
 //----------//
 
+//home page
+app.get('/',(req,res)=>{
+    res.render('Home');
+});
+
 //index
-app.get('/flor',(req,res)=>{
+app.get('/flor', requireAuth,(req,res)=>{
     Flower.find({},(err,allFlowers)=>{
         res.render('Index', {flower:allFlowers});
     });
@@ -78,11 +195,6 @@ app.get('/flor',(req,res)=>{
 //new
 app.get('/flor/new',(req,res)=>{
     res.render('New');
-});
-
-//create login
-app.get('/create-login',(req,res)=>{
-    res.render('CreateLogin');
 });
 
 //post

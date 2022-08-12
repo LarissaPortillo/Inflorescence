@@ -8,7 +8,7 @@ class Login extends React.Component{
                 <meta charSet="UTF-8" />
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <link rel="stylesheet" href="/css/login.css"></link>
+                {/* <link rel="stylesheet" href="/css/login.css"></link> */}
                 <link href="https://fonts.cdnfonts.com/css/drugs" rel="stylesheet"></link>
                 <title>Login</title>
             </head>
@@ -17,7 +17,7 @@ class Login extends React.Component{
                     <div className="titleNav"><a href='/' className="anchorTitle">I<span>N</span>FLORESCE<span>N</span>CE</a></div>
                 </nav>
 
-                
+{/*                 
                 <div class="main">  	
                     <input type="checkbox" id="chk" aria-hidden="true"/>
 
@@ -38,7 +38,7 @@ class Login extends React.Component{
                             <button>LOGI<span>N</span></button>
                         </form>
                     </div>
-                </div>
+                </div> */}
                     {/* <input type='checkbox' id='check' aria-hidden='true'></input>
                 <div class='signup'>
                     <form action='/' method='POST'>
@@ -61,7 +61,14 @@ class Login extends React.Component{
                 </div> */}
 
                 
-                
+                        <form>
+                            Username: <input type='text' name='username' required></input>
+                            <div className='username error'></div>
+                            Password: <input type='password' name='password' required></input>
+                            <div className='password error'></div>
+                            <input type='submit' name='' value='Login'></input>
+                        </form>
+                        <script src='/js/login.js'></script>
                 
             </body>
             </html>
