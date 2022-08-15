@@ -149,7 +149,6 @@ app.post('/signup', async(req,res)=>{
     }
     catch(err){
         const errors = handleErrors(err); 
-        // handleErrors(err);
         res.status(400).json({errors});
     }
 })
@@ -166,7 +165,6 @@ app.post('/login', async(req,res)=>{
     }
     catch(err){
         const errors = handleErrors(err);
-        // handleErrors(err);
         res.status(400).json({errors});
     }
 });

@@ -1,10 +1,9 @@
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,900');
-/* @import url('http://fonts.cdnfonts.com/css/drugs'); */
+@import url('https://fonts.cdnfonts.com/css/drugs'); 
 
 body{
     background-color: black;
-    text-align: center;
     color:black;
     font-family: 'Drugs', sans-serif;  
     margin: 0 auto;
@@ -39,7 +38,7 @@ span{
 .container{
     display:flex;
     flex-wrap: wrap;
-    padding:10px;
+    padding:4vw;
 }
 
 .left{
@@ -58,6 +57,19 @@ img{
     width:auto;
 }
 
+.price{
+    border-bottom: 1px solid white;
+}
+
+.inventory{
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+}
+
+.addCart{
+    padding-bottom: 3vh;
+    border-bottom: 1px solid white;
+}
 
 #cartBtn{
     width:15vw;
@@ -99,4 +111,33 @@ img{
   
 #nostock:hover{
     color:orangered;
+}
+
+.description{
+    padding-bottom: 3vh;
+    border-bottom: 1px solid white;
+}
+
+.edr{
+    padding-top: 3vh ;
+}
+
+.back{
+    color:orangered;
+    text-decoration: none;
+}
+
+i{
+    color:orangered;
+    cursor:pointer;
+}
+
+.del{
+    border:none;
+    background-color: transparent;
+}
+
+form{
+    display: flex;
+    justify-content: space-between;
 }
