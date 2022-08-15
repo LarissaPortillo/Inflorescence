@@ -204,6 +204,11 @@ app.post('/flor',(req,res)=>{
     });
 });
 
+//cart 
+app.get('/cart',(req,res)=>{
+    
+});
+
 //show
 app.get('/flor/:id',(req,res)=>{
     Flower.findById(req.params.id, (err,foundFlower)=>{

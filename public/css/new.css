@@ -1,0 +1,135 @@
+/* form style reference https://www.sanwebe.com/2014/08/css-html-forms-designs */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,900');
+@import url('https://fonts.cdnfonts.com/css/drugs');
+
+body{
+  background-color: black;
+  text-align: center;
+  color:black;
+  font-family: 'Drugs', sans-serif;  
+  margin: 0 auto;
+  padding-bottom:20px;
+}
+
+nav{
+	padding: 4px;
+  display:flex;
+  height:6vh;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid ;
+  border-bottom-color: orangered;
+}
+
+.titleNav{
+    font-weight: 500;
+    text-decoration: none;
+    color:orangered;
+}
+
+.anchorTitle{
+    text-decoration: none;
+    color:orangered;
+}
+  
+  
+.login{
+    text-decoration: none;
+    color:orangered;
+    font-weight: 500;
+}  
+
+
+.bckwrds{
+    transform: scaleX(-1);
+    display: inline-block;
+}
+
+h2{
+    color:orangered;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+form{
+    color:orangered;
+    width:50vw;
+    height: auto;
+    padding: 20px;
+}
+
+form ul{
+    list-style: none;
+    padding:0;
+    margin:0;
+}
+
+form li{
+    display:block;
+    padding: 9px;
+    border: 1px solid orangered;
+    margin-bottom: 30px;
+    border-radius: 3px;
+}
+
+form li:last-child{
+    border:none;
+    margin-bottom:0px;
+    text-align: center;
+    padding:4px;
+    background-color: antiquewhite;
+}
+
+
+form label{
+    display: block;
+    float:left;
+    height:5vh;
+    padding: 2px 5px 2px 5px;
+    overflow: hidden;
+}
+
+form input , form textarea{
+    box-sizing: border-box;
+    width:100%;
+    display: block;
+    height:7vh;
+    padding:0;
+    background: transparent;
+}
+
+form textarea{
+    height:20vh;
+    resize:none;
+}
+
+form input:focus , form textarea:focus{
+    display: block;
+    background: blanchedalmond;
+}
+form input[type="submit"]{
+    background: transparent;
+    color:orangered;
+    height: 8vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
+form input[type="submit"]:hover{
+	background: orangered;
+	color:#fff;
+    cursor:pointer;
+}
+
+.form{
+    padding: 4px;
+}
+form li > span{
+	display: block;
+	padding: 3px;
+	margin: 0 -9px -9px -9px;
+	text-align: center;
+	color: antiquewhite;
+}
