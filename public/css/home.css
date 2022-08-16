@@ -60,7 +60,7 @@ img{
   width:75vw;
 }
 
-span{
+.bckwrds{
   transform: scaleX(-1);
   display: inline-block;
 }
@@ -108,4 +108,14 @@ span{
   color: orangered;
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: orangered; 
+  border-radius: 3px;
 }

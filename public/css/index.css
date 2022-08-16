@@ -108,7 +108,7 @@ nav{
     color:orangered;
 }
 
-span{
+.bckwrds{
     transform: scaleX(-1);
     display: inline-block;
 }
@@ -222,4 +222,14 @@ i{
   
 #nostock:hover{
     color:orangered;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+   
+::-webkit-scrollbar-thumb {
+    background: orangered; 
+    border-radius: 3px;
 }

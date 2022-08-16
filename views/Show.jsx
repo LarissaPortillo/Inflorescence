@@ -15,7 +15,7 @@ class Show extends React.Component{
             </head>
             <body>
                 <nav>
-                    <a href='/' className="titleNav">I<span>N</span>FLORESCE<span>N</span>CE</a>
+                    <a href='/' className="titleNav">I<span className="bckwrds">N</span>FLORESCE<span className="bckwrds">N</span>CE</a>
                     <a href='/logout' className="login">LOGOUT</a>
                 </nav>
                 <div className='container'>

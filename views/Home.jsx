@@ -15,13 +15,13 @@ class Home extends React.Component{
             <body>  
                 {user ? 
                 <nav>
-                    <div className="titleNav"><a href='/' className="anchorTitle">I<span>N</span>FLORESCE<span>N</span>CE</a></div>
+                    <div className="titleNav"><a href='/' className="anchorTitle">I<span className="bckwrds">N</span>FLORESCE<span className="bckwrds">N</span>CE</a></div>
                     <a href='/logout' className="login">LOGOUT</a>                         
                 </nav>
                 :
                 <nav>
                     <div className="titleNav"><a href='/' className="anchorTitle">I<span>N</span>FLORESCE<span>N</span>CE</a></div>
-                    <a href='/login' className="login">LOGI<span>N</span></a>
+                    <a href='/login' className="login">LOGI<span className="bckwrds">N</span></a>
                 </nav>
                 }
                
