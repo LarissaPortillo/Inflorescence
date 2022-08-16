@@ -9,7 +9,6 @@ class Login extends React.Component{
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <link rel="stylesheet" href="/css/login.css"></link>
-                <link href="https://fonts.cdnfonts.com/css/drugs" rel="stylesheet"></link>
                 <script src="https://kit.fontawesome.com/398a8dbccf.js" crossorigin="anonymous"></script>
                 <title>Login</title>
             </head>

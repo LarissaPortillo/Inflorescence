@@ -9,7 +9,6 @@ class Edit extends React.Component{
                 <meta charSet="UTF-8" />
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <link href="https://fonts.cdnfonts.com/css/drugs" rel="stylesheet"></link>
                 <link rel="stylesheet" href="/css/new.css"></link>
                 <title>Edit Product</title>
             </head>
