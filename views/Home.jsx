@@ -20,7 +20,7 @@ class Home extends React.Component{
                 </nav>
                 :
                 <nav>
-                    <div className="titleNav"><a href='/' className="anchorTitle">I<span>N</span>FLORESCE<span>N</span>CE</a></div>
+                    <div className="titleNav"><a href='/' className="anchorTitle">I<span className="bckwrds">N</span>FLORESCE<span className="bckwrds">N</span>CE</a></div>
                     <a href='/login' className="login">LOGI<span className="bckwrds">N</span></a>
                 </nav>
                 }

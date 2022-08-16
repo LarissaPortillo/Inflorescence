@@ -44,11 +44,9 @@ const requireAuth = (req,res,next)=>{
     if(tkn){
         jwt.verify(tkn, 'my little secret', (err, decodedToken)=>{
             if(err){
-                console.log(err.message);
                 res.redirect('/login');
             }
             else{
-                console.log(decodedToken);
                 next();
             }
         });
@@ -65,12 +63,10 @@ const checkUser = (req,res,next)=>{
     if(tkn){
         jwt.verify(tkn, 'my little secret', async (err, decodedToken)=>{
             if(err){
-                console.log(err.message);
                 res.locals.user=null;
                 next();
             }
             else{
-                console.log(decodedToken);
                 let user = await User.findById(decodedToken.id);
                 res.locals.user = user;
                 next();
@@ -85,7 +81,6 @@ const checkUser = (req,res,next)=>{
 
 //handle errors
 const handleErrors = (err) =>{
-    console.log(err.message,err.code);
     let errors = {name: '', username:'', password:''};
     
     //incorrect username
@@ -202,196 +197,182 @@ app.post('/flor',(req,res)=>{
     });
 });
 
-//cart 
+//cart NOT DONE --> PROJECT SAID TO COMMENT OUT NON-WORKING CODE
 
-const itemById = async (id)=>{
-    const item = await Flower.findById(id);
-    return item;
-}
+// const itemById = async (id)=>{
+//     const item = await Flower.findById(id);
+//     return item;
+// }
 
-const crt = async()=>{
-    const carts=await Cart.find().populate({
-        path:'items.itemId',
-        select:'name price total'
-    });
-    return carts[0];
-} 
+// const crt = async()=>{
+//     const carts=await Cart.find().populate({
+//         path:'items.itemId',
+//         select:'name price total'
+//     });
+//     return carts[0];
+// } 
 
-const addItem = async (payload)=>{
-    const newItem = await Cart.create(payload);
-    return newItem;
-}
+// const addItem = async (payload)=>{
+//     const newItem = await Cart.create(payload);
+//     return newItem;
+// }
 
-//get cart
-app.get('/cart', async(req,res)=>{   
-    try{
-        let cart = await crt();
-        if(!cart){
-            return res.status(400).json({
-                type:'invalid',
-                msg:'cart not found',
-            });
-        }
-        res.status(200).json({
-            status:true,
-            data:cart
-        });
-    }
-    catch(err){
-        console.log(err);
-        res.status(400).json({
-            type:'invalid',
-            msg:'something went wrong in get cart',
-            err:err
-        });
-    }
-});
-
-//add item to cart
-app.post('/cart', async(req,res)=>{
-    const{itemId}=req.body;
-    const quantity=Number.parseInt(req.body.quantity);
-    try{
-        let cart = await crt();
-        let itemDetails = await itemById(itemId);
-        if(!itemDetails){
-            return res.status(500).json({
-                type:'Not found',
-                msg:'Invalid request'
-            });
-        }
-        //if cart exists 
-        if(cart){
-            //check if index exists
-            const indexFound=cart.items.findIndex(item=> item.itemId.id==itemId);
-            //remove item from cart if quantity is 0
-            if(indexFound !== -1 && quantity <=0){
-                cart.items.splice(indexFound,1);
-                if(cart.items.length ==0){
-                    cart.subtotal=0;
-                }
-                else{
-                    cart.subTotal= cart.items.map(item=>item.total).reduce((acc,next)=> acc+next);
-                }
-            }
-            //check product exists when updating quantity
-            else if (indexFound !==-1){
-                //if exist make sure that quantity is within quatity limit
-                const sub=parseInt(cart.items[indexFound].quantity);
-                if(quantity<= (itemDetails.inventory-sub)){
-                    cart.items[indexFound].quantity=cart.items[indexFound].quantity+quantity;
-                    cart.items[indexFound].total = cart.items[indexFound].quantity * itemDetails.price;
-                    cart.items[indexFound].price = itemDetails.price;
-                    cart.subTotal = cart.items.map(item => item.total).reduce((acc,next)=>acc+next);
-                }
-                else{
-                    return res.status(400).json({
-                        type:'invalid',
-                        msg:'cannot existing prod'
-                    })
-                }
-            }
-            //if quantity is greater than 0 then add items to array
-            else if(quantity>0 ){
-                const sub=cart.items[indexFound].quantity;
-                console.log(sub)
-                if(quantity<= (itemDetails.inventory-sub)){
-                    cart.items.push({
-                    itemId:itemId,
-                    quantity:quantity,
-                    price:itemDetails.price,
-                    total:parseInt(itemDetails.price * quantity)
-                });
-                cart.subTotal=cart.items.map(item=>item.total).reduce((acc,next)=>acc+next);
-                }
-                else{
-                    return res.status(400).json({
-                        type:'invalid',
-                        msg:'cannot add to existing item'
-                    })
-                }
-            }
-            //if quantity price is 0 throw error
-            else{
-                return res.status(400).json({
-                    type:'invalid',
-                    msg:'invalid request'
-                })
-            }
-            let data = await cart.save();
-            res.status(200).json({
-                type:'success',
-                msgs:'process successful',
-                data:data
-            });
-        }
-        //no cart? create cart and add items
-        else{
-            if(quantity<=itemDetails.inventory ){
-                 const cartData={
-                items:[{
-                    itemId:itemId,
-                    quantity:quantity,
-                    total:parseInt(itemDetails.price*quantity),
-                    price:itemDetails.price
-                }],
-                subTotal:parseInt(itemDetails.price*quantity)
-                } 
-                cart =await addItem(cartData);
-                res.json(cart);
-            }
-            else{
-                return res.status(400).json({
-                    type:'invalid',
-                    msg:'cannot add to new cart'
-                })
-            }
-        }
-    }
-    catch(err){
-        console.log(err);
-        res.status(400).json({
-            type:'Invalid',
-            msg:'something went wrong adding to cart',
-            err:err
-        });
-    }
-});
-
-//empty cart
-app.delete('/cart/empty-cart', async(req,res)=>{
-    try{
-        let cart = await crt();
-        cart.items=[];
-        cart.subTotal=0;
-        let data = await cart.save();
-        res.status(200).json({
-            type:'success',
-            msg:'cart has been emptied',
-            data:data
-        })
-    }
-    catch(err){
-        console.log(err);
-        res.status(400).json({
-            type:'invalid',
-            msg:'something went wrong with delete cart',
-            err:err
-        });
-    }
-});
-
-// app.post('/cart',(req,res)=>{
-//     jwt.verify(req.cookies.jwt, 'my little secret', async (err, decodedToken)=>{
-//         console.log('user',decodedToken);
-//         let user = await User.findById(decodedToken.id);
-//         Cart.create(req.body,(err,createdItem)=>{
-//             req.body.user=user;
-//             res.redirect('/cart');
+// //get cart
+// app.get('/cart', async(req,res)=>{   
+//     try{
+//         let cart = await crt();
+//         if(!cart){
+//             return res.status(400).json({
+//                 type:'invalid',
+//                 msg:'cart not found',
+//             });
+//         }
+//         res.status(200).json({
+//             status:true,
+//             data:cart
 //         });
-//     }); 
-    
+//     }
+//     catch(err){
+//         res.status(400).json({
+//             type:'invalid',
+//             msg:'something went wrong in get cart',
+//             err:err
+//         });
+//     }
 // });
+
+// //add item to cart
+// app.post('/cart', async(req,res)=>{
+//     const{itemId}=req.body;
+//     const quantity=Number.parseInt(req.body.quantity);
+//     try{
+//         let cart = await crt();
+//         let itemDetails = await itemById(itemId);
+//         if(!itemDetails){
+//             return res.status(500).json({
+//                 type:'Not found',
+//                 msg:'Invalid request'
+//             });
+//         }
+//         //if cart exists 
+//         if(cart){
+//             //check if index exists
+//             const indexFound=cart.items.findIndex(item=> item.itemId.id==itemId);
+//             //remove item from cart if quantity is 0
+//             if(indexFound !== -1 && quantity <=0){
+//                 cart.items.splice(indexFound,1);
+//                 if(cart.items.length ==0){
+//                     cart.subtotal=0;
+//                 }
+//                 else{
+//                     cart.subTotal= cart.items.map(item=>item.total).reduce((acc,next)=> acc+next);
+//                 }
+//             }
+//             //check product exists when updating quantity
+//             else if (indexFound !==-1){
+//                 //if exist make sure that quantity is within quatity limit
+//                 const sub=parseInt(cart.items[indexFound].quantity);
+//                 if(quantity<= (itemDetails.inventory-sub)){
+//                     cart.items[indexFound].quantity=cart.items[indexFound].quantity+quantity;
+//                     cart.items[indexFound].total = cart.items[indexFound].quantity * itemDetails.price;
+//                     cart.items[indexFound].price = itemDetails.price;
+//                     cart.subTotal = cart.items.map(item => item.total).reduce((acc,next)=>acc+next);
+//                 }
+//                 else{
+//                     return res.status(400).json({
+//                         type:'invalid',
+//                         msg:'cannot existing prod'
+//                     })
+//                 }
+//             }
+//             //if quantity is greater than 0 then add items to array
+//             else if(quantity>0 ){
+//                 const sub=cart.items[indexFound].quantity;
+//                 if(quantity<= (itemDetails.inventory-sub)){
+//                     cart.items.push({
+//                     itemId:itemId,
+//                     quantity:quantity,
+//                     price:itemDetails.price,
+//                     total:parseInt(itemDetails.price * quantity)
+//                 });
+//                 cart.subTotal=cart.items.map(item=>item.total).reduce((acc,next)=>acc+next);
+//                 }
+//                 else{
+//                     return res.status(400).json({
+//                         type:'invalid',
+//                         msg:'cannot add to existing item'
+//                     })
+//                 }
+//             }
+//             //if quantity price is 0 throw error
+//             else{
+//                 return res.status(400).json({
+//                     type:'invalid',
+//                     msg:'invalid request'
+//                 })
+//             }
+//             let data = await cart.save();
+//             res.status(200).json({
+//                 type:'success',
+//                 msgs:'process successful',
+//                 data:data
+//             });
+//         }
+//         //no cart? create cart and add items
+//         else{
+//             if(quantity<=itemDetails.inventory ){
+//                  const cartData={
+//                 items:[{
+//                     itemId:itemId,
+//                     quantity:quantity,
+//                     total:parseInt(itemDetails.price*quantity),
+//                     price:itemDetails.price
+//                 }],
+//                 subTotal:parseInt(itemDetails.price*quantity)
+//                 } 
+//                 cart =await addItem(cartData);
+//                 res.json(cart);
+//             }
+//             else{
+//                 return res.status(400).json({
+//                     type:'invalid',
+//                     msg:'cannot add to new cart'
+//                 })
+//             }
+//         }
+//     }
+//     catch(err){
+//         res.status(400).json({
+//             type:'Invalid',
+//             msg:'something went wrong adding to cart',
+//             err:err
+//         });
+//     }
+// });
+
+// //empty cart
+// app.delete('/cart/empty-cart', async(req,res)=>{
+//     try{
+//         let cart = await crt();
+//         cart.items=[];
+//         cart.subTotal=0;
+//         let data = await cart.save();
+//         res.status(200).json({
+//             type:'success',
+//             msg:'cart has been emptied',
+//             data:data
+//         })
+//     }
+//     catch(err){
+//         res.status(400).json({
+//             type:'invalid',
+//             msg:'something went wrong with delete cart',
+//             err:err
+//         });
+//     }
+// });
+//end of cart section
+//////
 
 //show
 app.get('/flor/:id',(req,res)=>{
