@@ -16,7 +16,7 @@ class Edit extends React.Component{
             <body>
                 <nav>
                     <a href='/' className="titleNav">I<span>N</span>FLORESCE<span>N</span>CE</a>
-                    <a href='/' className="login">LOGOUT</a>
+                    <a href='/logout' className="login">LOGOUT</a>
                 </nav>
                 <h2>Edit product.</h2>
                 <div className='container'>

@@ -17,7 +17,7 @@ class Index extends React.Component{
             <body>
                 <nav>
                     <a href='/' className="titleNav">I<span>N</span>FLORESCE<span>N</span>CE</a>
-                    <a href='/' class="login">LOGOUT</a>
+                    <a href='/logout' className="login">LOGOUT</a>
                     <a><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
                 </nav>
                 <div className='new'>
