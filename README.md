@@ -12,6 +12,7 @@ For the Per Scholas Module 2 Project, we are tasked with creating an app that em
 ***
 [![Watch the video](/public/media/home.jpg)](https://vimeo.com/740217752)
 
+[![Watch coding video](/public/media/code.jpg)](https://vimeo.com/740356542)
 ## Routes
 ***
 
