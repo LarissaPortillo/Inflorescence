@@ -34,15 +34,6 @@ userSchema.statics.login = async function(username,password){
             return user;
         }
         throw Error('incorrect password')
-            // function(err, isMatch){
-            // if(err){
-            //     throw err;
-            // }
-            // else if (isMatch) {
-            //   return user;
-            // } 
-            // throw ('incorrect password');
-        // });
     }
     throw Error('incorrect username');
 }
