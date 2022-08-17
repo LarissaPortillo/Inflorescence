@@ -110,6 +110,7 @@ form input:focus , form textarea:focus{
     display: block;
     background: blanchedalmond;
 }
+
 form input[type="submit"]{
     background: transparent;
     color:orangered;

@@ -33,7 +33,7 @@ class Home extends React.Component{
                         <div className='greetingContain'><div class="greeting"> Welcome, Stranger</div></div>
                     }
                     <div className="container">
-                            <div className="title">I<span>N</span>FLORESCE<span>N</span>CE</div>
+                            <div className="title">I<span className="bckwrds">N</span>FLORESCE<span className="bckwrds">N</span>CE</div>
                     </div>
                   
                     <img src="/media/bust.png"></img>

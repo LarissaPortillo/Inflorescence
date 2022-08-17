@@ -38,7 +38,7 @@ class Edit extends React.Component{
                                 <span clasName='form'>Enter the amount of available product stock. Numbers only.</span> 
                             </li>
                             <li>
-                                <label for='description'>Product Detail:</label> <input type='text' name='description' value={flower.description}></input> 
+                                <label for='description'>Product Detail:</label> <textarea type='text' name='description' value={flower.description}></textarea> 
                                 <span clasName='form' >Write a description of the product for customers to see.</span>               
                             </li>
                             <li>

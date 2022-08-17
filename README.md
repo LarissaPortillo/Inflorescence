@@ -37,7 +37,8 @@ As of now the cart routes are commented out because I was not able to complete t
 ## User Stories
 ***
 * User is able to create a user
-* User is able to login
+* User is able to log in
+* User is able to log out
 * User is able to create a new product
 * User is able to edit a product
 * User is able to delete a product
