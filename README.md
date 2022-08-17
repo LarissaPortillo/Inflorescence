@@ -108,4 +108,4 @@ I wanted to include more features in this app, but due to the time constraint I 
 * Include a search bar and filter option in the Index when navigating through the products. 
 
 [1]:https://inflorescence123.herokuapp.com "live site"
-[2]:https://www.youtube.com/watch?v=SnoAwLP1a-0&list=PL4cUxeGkcC9iqqESP8335DA5cRFp8loyp "youtube link'
+[2]:https://www.youtube.com/watch?v=SnoAwLP1a-0&list=PL4cUxeGkcC9iqqESP8335DA5cRFp8loyp "youtube link"
