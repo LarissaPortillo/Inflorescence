@@ -10,7 +10,7 @@ For the Per Scholas Module 2 Project, we are tasked with creating an app that em
 
 ## Brief Example
 ***
-[!Watch the video](https://vimeo.com/740217752)
+[![Watch the video](/public/media/home.jpg)](https://vimeo.com/740217752)
 
 ## Routes
 ***
