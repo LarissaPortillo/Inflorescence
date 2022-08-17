@@ -47,7 +47,7 @@ class Show extends React.Component{
                                 <button className='del'type="submit"><i className="fa fa-trash" aria-hidden="true"></i></button>
                             </form>
                             <br></br>
-                            <a href='/flor' className="back">Back to Home Page</a>
+                            <a href='/flor' className="back">Back to Index Page</a>
                         </div>
                        
                     </div>
