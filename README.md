@@ -32,10 +32,11 @@ PUT | /api/v1/flor/:id | edit/update a flower product |
 DELETE | /api/v1/flor/:id | delete a flower product|
 
 ## Approach Taken
+So, I mostly followed the code from our Pokemon project to implement the 7 required routes. For the login and sign up routes I looked for outside resources. Specifically [this][2] youtube video was helpful in understanding the logic behind sign up and login routes.
 
 ## Unsolved Problems
 ***
-As of now the cart routes are commented out because I was not able to complete the functionality of such a feature. 
+As of now the cart routes are not implemented because I was not able to complete the functionality of such a feature. 
 
 
 ## User Stories
@@ -107,3 +108,4 @@ I wanted to include more features in this app, but due to the time constraint I 
 * Include a search bar and filter option in the Index when navigating through the products. 
 
 [1]:https://inflorescence123.herokuapp.com "live site"
+[2]:https://www.youtube.com/watch?v=SnoAwLP1a-0&list=PL4cUxeGkcC9iqqESP8335DA5cRFp8loyp "youtube link'
