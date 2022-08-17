@@ -36,7 +36,7 @@ So, I mostly followed the code from our Pokemon project to implement the 7 requi
 
 ## Unsolved Problems
 ***
-As of now the cart routes are not implemented because I was not able to complete the functionality of such a feature. 
+As of now the cart routes are not implemented because I was not able to complete the functionality of such a feature. There is a cart.jsx and cart schema, but they aren't being used at the current stage of the project. 
 
 
 ## User Stories
