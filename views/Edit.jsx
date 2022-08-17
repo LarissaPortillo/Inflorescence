@@ -1,21 +1,21 @@
-const React = require("react");
+const React = require('react');
 
 class Edit extends React.Component{
     render(){
         const flower = this.props.flower;
         return(
-            <html lang="en">
+            <html lang='en'>
             <head>
-                <meta charSet="UTF-8" />
-                <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <link rel="stylesheet" href="/css/new.css"></link>
+                <meta charSet='UTF-8' />
+                <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+                <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+                <link rel='stylesheet' href='/css/new.css'></link>
                 <title>Edit Product</title>
             </head>
             <body>
                 <nav>
-                    <a href='/' className="titleNav">I<span className="bckwrds">N</span>FLORESCE<span className="bckwrds">N</span>CE</a>
-                    <a href='/logout' className="login">LOGOUT</a>
+                    <a href='/' className='titleNav'>I<span className='bckwrds'>N</span>FLORESCE<span className='bckwrds'>N</span>CE</a>
+                    <a href='/logout' className='login'>LOGOUT</a>
                 </nav>
                 <h2>Edit product.</h2>
                 <div className='container'>
@@ -30,11 +30,11 @@ class Edit extends React.Component{
                                 <span clasName='form'>Enter name of the product</span>       
                             </li>
                             <li>
-                                <label for='price'>Price:</label><input type='number' name='price' step="any" min="0" value={flower.price}></input>
+                                <label for='price'>Price:</label><input type='number' name='price' step='any' min='0' value={flower.price}></input>
                                 <span clasName='form'>Enter the price of the product. Numbers only.</span>      
                             </li>
                             <li>
-                                <label for='inventory'>Inventory:</label> <input type='number' name='inventory' min="0" value={flower.inventory}></input>
+                                <label for='inventory'>Inventory:</label> <input type='number' name='inventory' min='0' value={flower.inventory}></input>
                                 <span clasName='form'>Enter the amount of available product stock. Numbers only.</span> 
                             </li>
                             <li>

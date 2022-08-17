@@ -71,7 +71,7 @@ nav{
     line-height: 22px;
     letter-spacing: 0.5px;
     outline: none;
-    color: #c4c3ca;
+    color: black;
     background-color:wheat;
     border: none; 
     box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
@@ -80,6 +80,7 @@ nav{
 .fs:focus, .fs:active {
     border: none;
     outline: none;
+    background-color: #c4c3ca ;
     box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
 }
 
@@ -141,4 +142,8 @@ nav{
 ::-webkit-scrollbar-thumb {
     background: orangered; 
     border-radius: 3px;
+}
+
+.show{
+    color:orangered;
 }

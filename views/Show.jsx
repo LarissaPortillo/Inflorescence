@@ -1,22 +1,22 @@
-const React = require("react");
+const React = require('react');
 
 class Show extends React.Component{
     render(){
         const flower = this.props.flower;
         return(
-            <html lang="en">
+            <html lang='en'>
             <head>
-                <meta charSet="UTF-8" />
-                <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <link rel="stylesheet" href="/css/show.css"></link>
-                <script src="https://kit.fontawesome.com/398a8dbccf.js" crossorigin="anonymous"></script>
+                <meta charSet='UTF-8' />
+                <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+                <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+                <link rel='stylesheet' href='/css/show.css'></link>
+                <script src='https://kit.fontawesome.com/398a8dbccf.js' crossOrigin='anonymous'></script>
                 <title>Show</title>
             </head>
             <body>
                 <nav>
-                    <a href='/' className="titleNav">I<span className="bckwrds">N</span>FLORESCE<span className="bckwrds">N</span>CE</a>
-                    <a href='/logout' className="login">LOGOUT</a>
+                    <a href='/' className='titleNav'>I<span className='bckwrds'>N</span>FLORESCE<span className='bckwrds'>N</span>CE</a>
+                    <a href='/logout' className='login'>LOGOUT</a>
                 </nav>
                 <div className='container'>
                     <div className='left'>
@@ -26,28 +26,28 @@ class Show extends React.Component{
                         <div className='name'>
                          <h1>{flower.name.charAt(0).toUpperCase()+flower.name.slice(1).toLowerCase()}</h1>   
                         </div>
-                        <div className="price">
+                        <div className='price'>
                             <h3>{`$ ${flower.price}`}</h3>
                         </div>
                         <div className='inventory'>
                             {flower.inventory===0? 'out of stock' : `Inventory: ${flower.inventory}` }
                         </div>
-                        <div className="addCart">
-                            {flower.inventory===0?  <button disabled='true' class="cBtn" id="nostock" >Sorry no stock</button>  : <button id="cartBtn">Add to Cart<i id="cart" class="fa fa-cart-plus" aria-hidden="true"></i></button> }  
+                        <div className='addCart'>
+                            {flower.inventory===0?  <button disabled='true' className='cBtn' id='nostock' >Sorry no stock</button>  : <button id='cartBtn'>Add to Cart<i id='cart' className='fa fa-cart-plus' aria-hidden='true'></i></button> }  
                         </div>
 
-                        <div className="description">
+                        <div className='description'>
                             <h4>Product Info</h4>
                             <p>{`${flower.description}`}</p>
                         </div>
-                        <div className="edr">
+                        <div className='edr'>
                            
                             <form action={`/flor/${flower.id}?_method=DELETE`} method='POST'>
-                                <a href={`/flor/${flower.id}/edit`}><i className="fa fa-pencil" aria-hidden="true"></i></a>
-                                <button className='del'type="submit"><i className="fa fa-trash" aria-hidden="true"></i></button>
+                                <a href={`/flor/${flower.id}/edit`}><i className='fa fa-pencil' aria-hidden='true'></i></a>
+                                <button className='del'type='submit'><i className='fa fa-trash' aria-hidden='true'></i></button>
                             </form>
                             <br></br>
-                            <a href='/flor' className="back">Back to Index Page</a>
+                            <a href='/flor' className='back'>Back to Index Page</a>
                         </div>
                        
                     </div>

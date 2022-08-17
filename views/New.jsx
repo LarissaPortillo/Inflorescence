@@ -1,20 +1,20 @@
-const React = require("react");
+const React = require('react');
 
 class New extends React.Component{
     render(){
         return(
-            <html lang="en">
+            <html lang='en'>
             <head>
-                <meta charSet="UTF-8" />
-                <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <link rel="stylesheet" href="/css/new.css"></link>
+                <meta charSet='UTF-8' />
+                <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+                <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+                <link rel='stylesheet' href='/css/new.css'></link>
                 <title>New</title>
             </head>
             <body>
                 <nav>
-                    <div className="titleNav"><a href='/' className="anchorTitle">I<span className="bckwrds">N</span>FLORESCE<span className="bckwrds">N</span>CE</a></div>
-                    <a href='/logout' className="login">LOGOUT</a>                         
+                    <div className='titleNav'><a href='/' className='anchorTitle'>I<span className='bckwrds'>N</span>FLORESCE<span className='bckwrds'>N</span>CE</a></div>
+                    <a href='/logout' className='login'>LOGOUT</a>                         
                 </nav>
                 <h2>Create a new product. Fill out every section.</h2>
                 <div className='container'>
@@ -29,11 +29,11 @@ class New extends React.Component{
                                 <span clasName='form'>Enter name of the product</span>                       
                             </li> 
                             <li>
-                                <label for='price'>Price:</label> <input type='number' name='price' step="any" min="0"></input>
+                                <label for='price'>Price:</label> <input type='number' name='price' step='any' min='0'></input>
                                 <span clasName='form'>Enter the price of the product. Numbers only.</span>                     
                             </li> 
                             <li>
-                                <label for='inventory'>Inventory:</label> <input type='number' name='inventory' min="0"></input>
+                                <label for='inventory'>Inventory:</label> <input type='number' name='inventory' min='0'></input>
                                 <span clasName='form'>Enter the amount of available product stock. Numbers only.</span> 
                             </li> 
                             <li>
