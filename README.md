@@ -8,6 +8,10 @@ Click [here][1] for the live site link to my store.
 ***
 For the Per Scholas Module 2 Project, we are tasked with creating an app that emulates a store of our creation. I decided to build a website that sells arrangement of flowers.
 
+## Brief Example
+***
+[!Watch the video](https://vimeo.com/740217752)
+
 ## Routes
 ***
 
